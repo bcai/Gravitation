@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">  
+  <link rel=stylesheet href="./css/style.css" type="text/css" media=screen>
+  <title></title>
+</head>
+
+<body>
+  <canvas id="game-canvas"></canvas>
+  <script type="text/javascript" src="keymaster.js"></script>
+  <script type="text/javascript" src="bundle.js"></script>
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded",
+      function(){
+
+        var canvas = document.getElementById("game-canvas");
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        var context = canvas.getContext("2d");
+
+        if (!context) {
+          return;
+        }
+
+        // var physics = new Physics();
+        // var newGame = new Game(physics);
+
+        var newGame = new Game();
+        var gameView = new GameView(newGame, context);
+        // physics.onUpdate(GameView.start);
+        gameView.start();
+
+        // canvas.onclick = function(event){
+        //   physics.toggle();
+        // };
+
+        // canvas.physics = physics;
+      });
+  </script>
+
+</body>
+
+</html>

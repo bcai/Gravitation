@@ -1,0 +1,40 @@
+/* RESET */
+
+html, body, section, article, h1, h2, h3, p, strong, em, a, div, ul, button {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  color: inherit;
+  background: transparent;
+}
+button {
+  outline: none;
+}
+input:focus {
+  outline: none;
+}
+
+/* SHARED */
+
+html{
+  height: 100%;
+}
+body {
+  overflow: hidden;
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  background-size: 55px 55px;
+  background-image: linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px);
+}
+
+ul {
+  list-style-type: none; 
+}
+
