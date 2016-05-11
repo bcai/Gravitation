@@ -46,8 +46,8 @@
 
 	var Util = __webpack_require__(1);
 	var MovingObject = __webpack_require__(2);
-	var Mass = __webpack_require__(4);
-	var Ship = __webpack_require__(3);
+	var Mass = __webpack_require__(3);
+	var Ship = __webpack_require__(4);
 	var Game = __webpack_require__(5);
 	var GameView = __webpack_require__(6);
 	
@@ -125,6 +125,7 @@
 	Util.randomVec = function() {
 	  var dx = (Math.random() * 2) - 2;
 	  var dy = (Math.random() * 2) - 2;
+	  console.log(dx + "," + dy);
 	  return [dx, dy];
 	};
 	
@@ -192,49 +193,6 @@
 	var Util = __webpack_require__(1);
 	var MovingObject = __webpack_require__(2);
 	
-	
-	var Ship = function(game){
-	  MovingObject.call(this, [window.innerWidth/2, window.innerHeight/2],
-	                    [0,0],
-	                    Ship.RADIUS,
-	                    Ship.SIZE,
-	                    Ship.COLOR, game);
-	};
-	Util.inherits(Ship, MovingObject);
-	
-	Ship.RADIUS = 10;
-	Ship.SIZE = 500;
-	Ship.COLOR = "#FFF";
-	
-	
-	Ship.prototype.reset = function () {
-	  this.pos = [window.innerWidth/2,window.innerHeight/2];
-	  this.vel = [0,0];
-	  this.size = 500;
-	  this.radius = 10;
-	};
-	
-	
-	Ship.prototype.power = function(impulse) {
-	  this.vel[0] += impulse[0];
-	  this.vel[1] += impulse[1];
-	};
-	
-	Ship.prototype.collideWith = function(otherObject){
-	  this.radius = Math.sqrt((Math.PI * Math.pow(this.radius, 2) + (Math.PI * Math.pow(otherObject.radius, 2))) / Math.PI);
-	  this.size += otherObject.size;
-	  this.game.removeMass(otherObject);
-	};
-	
-	module.exports = Ship;
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Util = __webpack_require__(1);
-	var MovingObject = __webpack_require__(2);
-	
 	var Mass = function(pos, game) {
 	  var radius = (Math.random() * 14) + 7;
 	  var size = radius * 5;
@@ -276,11 +234,54 @@
 
 
 /***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Util = __webpack_require__(1);
+	var MovingObject = __webpack_require__(2);
+	
+	
+	var Ship = function(game){
+	  MovingObject.call(this, [window.innerWidth/2, window.innerHeight/2],
+	                    [0,0],
+	                    Ship.RADIUS,
+	                    Ship.SIZE,
+	                    Ship.COLOR, game);
+	};
+	Util.inherits(Ship, MovingObject);
+	
+	Ship.RADIUS = 10;
+	Ship.SIZE = 500;
+	Ship.COLOR = "#FFF";
+	
+	
+	Ship.prototype.reset = function () {
+	  this.pos = [window.innerWidth/2,window.innerHeight/2];
+	  this.vel = [0,0];
+	  this.size = 500;
+	  this.radius = 10;
+	};
+	
+	
+	Ship.prototype.power = function(impulse) {
+	  this.vel[0] += impulse[0];
+	  this.vel[1] += impulse[1];
+	};
+	
+	Ship.prototype.collideWith = function(otherObject){
+	  this.radius = Math.sqrt((Math.PI * Math.pow(this.radius, 2) + (Math.PI * Math.pow(otherObject.radius, 2))) / Math.PI);
+	  this.size += otherObject.size;
+	  this.game.removeMass(otherObject);
+	};
+	
+	module.exports = Ship;
+
+/***/ },
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Mass = __webpack_require__(4);
-	var Ship = __webpack_require__(3);
+	var Mass = __webpack_require__(3);
+	var Ship = __webpack_require__(4);
 	var Util = __webpack_require__(1);
 	
 	var Game = function() {
