@@ -38,3 +38,78 @@ ul {
   list-style-type: none; 
 }
 
+h1 {
+  position: absolute;
+  top: 10px;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  color: white;
+  font-family: monospace;
+  font-size: 48px;
+}
+
+.clear {
+  position: absolute;
+  right: 12px;
+  top: 20px;
+  background-color: white;
+  padding: 8px 10px;
+  opacity: 0.55;
+  font-family: monospace;
+  font-size: 20px;
+  border-radius: 3px;
+}
+.clear:hover {
+  cursor:pointer;
+  background-color: white;
+  opacity: 0.8;
+}
+
+.reset {
+  position: absolute;
+  right: 106px;
+  top: 20px;
+  background-color: white;
+  padding: 8px 10px;
+  opacity: 0.55;
+  font-family: monospace;
+  font-size: 20px;
+  border-radius: 3px;
+}
+.reset:hover {
+  cursor:pointer;
+  background-color: white;
+  opacity: 0.8;
+}
+
+h3 {
+  position: absolute;
+  right: 77px;
+  top: 80px;
+  text-align: center;
+  color: white;
+  font-family: monospace;
+  font-size: 20px;
+}
+
+#anti-gravity {
+  position: absolute;
+  right: 12px;
+  top: 75px;
+
+  width: 35px;
+  text-align: center;
+  background-color: white;
+  padding: 6px 10px;
+  opacity: 0.55;
+  font-family: monospace;
+  font-size: 20px;
+  border-radius: 3px;
+}
+#anti-gravity:hover {
+  cursor:pointer;
+  background-color: white;
+  opacity: 0.8;
+}
+
