@@ -14,9 +14,20 @@ var GameView = require('./lib/gameView.js');
     var newGame = new Game();
     var gameView = new GameView(newGame, context);
 
-    gameView.start();
+    var resizeCanvas = function() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      newGame.dimX = window.innerWidth;
+      newGame.dimY = window.innerHeight; 
+      newGame.draw(context);
+    };
     
+    window.addEventListener('resize', resizeCanvas, false);
 
+    gameView.start();
+
+
+    
     // Reset-All Button
     var resetAllButton = document.createElement("Button");
     resetAllButton.id = 'reset-all';

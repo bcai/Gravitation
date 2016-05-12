@@ -43,14 +43,14 @@ ul {
 .instructions {
   bottom: 0;
   position: absolute;
-  max-height: 84%;
+  max-height: 82.5%;
   background-color: rgba(255,255,255,0.15);
   color: white;
   font-family: monospace;
-  width: 21%;
+  width: 20.9%;
   min-width: 150px;
-  margin: auto;
   padding: 20px;
+  padding-right:10px;
   z-index: -1;
 }
 .instructions h2 {

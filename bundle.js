@@ -60,9 +60,20 @@
 	    var newGame = new Game();
 	    var gameView = new GameView(newGame, context);
 	
-	    gameView.start();
+	    var resizeCanvas = function() {
+	      canvas.width = window.innerWidth;
+	      canvas.height = window.innerHeight;
+	      newGame.dimX = window.innerWidth;
+	      newGame.dimY = window.innerHeight; 
+	      newGame.draw(context);
+	    };
 	    
+	    window.addEventListener('resize', resizeCanvas, false);
 	
+	    gameView.start();
+	
+	
+	    
 	    // Reset-All Button
 	    var resetAllButton = document.createElement("Button");
 	    resetAllButton.id = 'reset-all';
@@ -347,7 +358,6 @@
 	Game.DIM_Y = window.innerHeight;
 	Game.NUM_MASSES = 15;
 	
-	
 	Game.prototype.addMasses = function() {
 	  for(var i = 0; i < this.numMasses; i++){
 	    var newMass = new Mass(this.randomPos(), this);
@@ -382,8 +392,8 @@
 	};
 	
 	Game.prototype.randomPos = function () {
-	  var x = (Math.random() * Game.DIM_X);
-	  var y = (Math.random() * Game.DIM_Y);
+	  var x = (Math.random() * this.dimX);
+	  var y = (Math.random() * this.dimY);
 	  return [x,y];
 	};
 	
@@ -476,12 +486,12 @@
 	Game.prototype.wrap = function (pos) {
 	  var posArray = pos;
 	  if (pos[0] < -50){
-	    posArray[0] = Game.DIM_X + 50;
-	  } else if (pos[0] > Game.DIM_X + 50) {
+	    posArray[0] = this.dimX + 50;
+	  } else if (pos[0] > this.dimX + 50) {
 	    posArray[0] = -50;
 	  } else if (pos[1] < -50){
-	    posArray[1] = Game.DIM_Y + 50;
-	  } else if (pos[1] > Game.DIM_Y + 50) {
+	    posArray[1] = this.dimY + 50;
+	  } else if (pos[1] > this.dimY + 50) {
 	    posArray[1] = -50;
 	  }
 	  return posArray;
@@ -536,6 +546,7 @@
 	
 	GameView.prototype.start = function(){
 	  this.bindKeyHandlers();
+	
 	  setInterval(this.game.draw.bind(this.game), 20, this.ctx);
 	  setInterval(this.game.step.bind(this.game), 20);
 	};
