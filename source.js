@@ -32,7 +32,7 @@ var GameView = require('./lib/gameView.js');
     var resetShipButton = document.createElement("Button");
     resetShipButton.id = 'reset-ship';
     resetShipButton.className = 'button';
-    var resetShipText = document.createTextNode("Ship");     
+    var resetShipText = document.createTextNode("Mass");     
     resetShipButton.appendChild(resetShipText); 
     document.body.appendChild(resetShipButton);
     resetShipButton.addEventListener('click', function(e){

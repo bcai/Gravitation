@@ -38,9 +38,37 @@ ul {
   list-style-type: none; 
 }
 
+
+.instructions {
+  bottom: 0;
+  position: absolute;
+  background-color: rgba(255,255,255,0.15);
+  color: white;
+  font-family: monospace;
+  width: 25%;
+  margin: auto;
+  padding: 20px;
+  z-index: -1;
+}
+.instructions h2 {
+  text-align: center;
+  font-size: 20px;
+}
+.instructions h4 {
+  font-size: 14px;
+  font-weight: normal;
+}
+.instructions p {
+  font-size: 13px;
+}
+.instructions:hover{
+  display:block;
+}
+
+
 h1 {
   position: absolute;
-  top: 15px;
+  top: 18px;
   text-align: center;
   width: 100%;
   margin: auto;
