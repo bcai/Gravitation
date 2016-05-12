@@ -13,7 +13,7 @@ Gravitation is a gravity simulation demo built purely on Javascript, utilizing C
 
 Gravitation makes use of the Universal Law of Gravitation to calculate all interactions between gravitational masses on the canvas. Using the position, velocity, and masses of two objects, the resulting velocity vectors of the masses can be calculated accounting for the attractive forces between the two elements given their distance to one another.
 
-This calculation is calculated betweene every element existing on the canvas at a given time. 
+This calculation is calculated between every element existing on the canvas at a given time. 
 
 
 Vector Math:
