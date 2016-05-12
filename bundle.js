@@ -61,11 +61,46 @@
 	    var gameView = new GameView(newGame, context);
 	
 	    gameView.start();
+	    
 	
+	    // Reset-All Button
+	    var resetAllButton = document.createElement("Button");
+	    resetAllButton.id = 'reset-all';
+	    resetAllButton.className = 'button';
+	    var resetAllText = document.createTextNode("All");     
+	    resetAllButton.appendChild(resetAllText); 
+	    document.body.appendChild(resetAllButton);
+	    resetAllButton.addEventListener('click', function(e){
+	      newGame.resetAll();
+	    });
+	
+	    // Reset-Ship Button
+	    var resetShipButton = document.createElement("Button");
+	    resetShipButton.id = 'reset-ship';
+	    resetShipButton.className = 'button';
+	    var resetShipText = document.createTextNode("Ship");     
+	    resetShipButton.appendChild(resetShipText); 
+	    document.body.appendChild(resetShipButton);
+	    resetShipButton.addEventListener('click', function(e){
+	      newGame.resetShip();
+	    });
+	
+	
+	    // Populate
+	    var populateButton = document.createElement("Button");
+	    populateButton.id = 'populate';
+	    populateButton.className = "button";
+	    var populateText = document.createTextNode("Populate");     
+	    populateButton.appendChild(populateText); 
+	    document.body.appendChild(populateButton);
+	    populateButton.addEventListener('click', function(e){
+	      newGame.populateMasses();
+	    });
 	
 	    // Clear Button
 	    var clearButton = document.createElement("Button");
-	    clearButton.className = 'clear';
+	    clearButton.id = 'clear';
+	    clearButton.className = "button";
 	    var clearText = document.createTextNode("Clear");     
 	    clearButton.appendChild(clearText); 
 	    document.body.appendChild(clearButton);
@@ -73,15 +108,6 @@
 	      newGame.clearMasses();
 	    }); 
 	
-	    // Reset Button
-	    var resetButton = document.createElement("Button");
-	    resetButton.className = 'reset';
-	    var resetText = document.createTextNode("Reset");     
-	    resetButton.appendChild(resetText); 
-	    document.body.appendChild(resetButton);
-	    resetButton.addEventListener('click', function(e){
-	      newGame.resetMasses();
-	    });
 	
 	    // AntiGravity
 	    var antiGButton = document.createElement("Button");
@@ -104,10 +130,6 @@
 	      var posY = event.clientY;
 	      newGame.addMass([posX,posY]);
 	    });
-	
-	    // var shipRadius = newGame.ship.radius;
-	    // var radiusCount = document.createTextNode("Mass: " + shipRadius);
-	    // document.body.appendChild(radiusCount);
 
 /***/ },
 /* 1 */
@@ -254,6 +276,26 @@
 	Ship.SIZE = 500;
 	Ship.COLOR = "#FFF";
 	
+	Ship.prototype.draw = function(ctx) {
+	  ctx.fillStyle = this.color;
+	  ctx.beginPath();
+	
+	  ctx.arc(
+	    this.pos[0],
+	    this.pos[1],
+	    this.radius,
+	    0,
+	    2 * Math.PI,
+	    false
+	  );
+	
+	  ctx.fill();
+	  ctx.fillStyle = "black";
+	  ctx.font = this.radius * 0.5 + "px Verdana";
+	  ctx.textAlign = "center";
+	  ctx.fillText(Math.round(this.size), this.pos[0] , this.pos[1] + (0.2 * this.radius));
+	};
+	
 	
 	Ship.prototype.reset = function () {
 	  this.pos = [window.innerWidth/2,window.innerHeight/2];
@@ -262,6 +304,14 @@
 	  this.radius = 10;
 	};
 	
+	Ship.prototype.move = function(){
+	  this.pos = this.game.wrap(this.pos);
+	  this.pos[0] += (this.vel[0]);
+	  this.pos[1] += (this.vel[1]);
+	
+	  this.vel[0] *= 0.999;
+	  this.vel[1] *= 0.999;
+	};
 	
 	Ship.prototype.power = function(impulse) {
 	  this.vel[0] += impulse[0];
@@ -309,17 +359,28 @@
 	Game.prototype.addMass = function(pos) {
 	  var newMass = new Mass(pos, this);
 	  this.masses.push(newMass);
-	}
+	};
 	
-	Game.prototype.resetMasses = function() {
+	Game.prototype.populateMasses = function() {
+	  for(var i = 0; i < 15; i++){
+	    var newMass = new Mass(this.randomPos(), this);
+	    this.masses.push(newMass);
+	  }
+	};
+	
+	Game.prototype.resetAll = function() {
 	  this.masses = [];
 	  this.addMasses();
 	  this.ship.reset();
-	}
+	};
+	
+	Game.prototype.resetShip = function() {
+	  this.ship.reset();
+	};
 	
 	Game.prototype.clearMasses = function() {
 	  this.masses = [];
-	}
+	};
 	
 	Game.prototype.randomPos = function () {
 	  var x = (Math.random() * Game.DIM_X);
@@ -487,19 +548,19 @@
 	    var move = GameView.MOVES[coord];
 	    key(coord, function () { 
 	      var max = false;
-	      if( ship.vel[0] + move[0] > 5 || ship.vel[0] + move[0] < -5){
+	      if( ship.vel[0] + move[0] > 1.55 || ship.vel[0] + move[0] < -1.55){
 	        if (ship.vel[0] > 0){
-	          ship.vel = [5, ship.vel[1]];
+	          ship.vel = [1.55, ship.vel[1]];
 	        } else {
-	          ship.vel = [-5, ship.vel[1]];
+	          ship.vel = [-1.55, ship.vel[1]];
 	        }
 	        max = true;
 	      }
-	      if (ship.vel[1] + move[1] > 5 || ship.vel[1] + move[1] < -5){
+	      if (ship.vel[1] + move[1] > 1.55 || ship.vel[1] + move[1] < -1.55){
 	        if (ship.vel[1] > 0) {
-	          ship.vel = [ship.vel[0], 5];
+	          ship.vel = [ship.vel[0], 1.55];
 	        } else {
-	          ship.vel = [ship.vel[0], -5];
+	          ship.vel = [ship.vel[0], -1.55];
 	        }
 	        max = true;
 	      }

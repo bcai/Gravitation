@@ -15,11 +15,46 @@ var GameView = require('./lib/gameView.js');
     var gameView = new GameView(newGame, context);
 
     gameView.start();
+    
 
+    // Reset-All Button
+    var resetAllButton = document.createElement("Button");
+    resetAllButton.id = 'reset-all';
+    resetAllButton.className = 'button';
+    var resetAllText = document.createTextNode("All");     
+    resetAllButton.appendChild(resetAllText); 
+    document.body.appendChild(resetAllButton);
+    resetAllButton.addEventListener('click', function(e){
+      newGame.resetAll();
+    });
+
+    // Reset-Ship Button
+    var resetShipButton = document.createElement("Button");
+    resetShipButton.id = 'reset-ship';
+    resetShipButton.className = 'button';
+    var resetShipText = document.createTextNode("Ship");     
+    resetShipButton.appendChild(resetShipText); 
+    document.body.appendChild(resetShipButton);
+    resetShipButton.addEventListener('click', function(e){
+      newGame.resetShip();
+    });
+
+
+    // Populate
+    var populateButton = document.createElement("Button");
+    populateButton.id = 'populate';
+    populateButton.className = "button";
+    var populateText = document.createTextNode("Populate");     
+    populateButton.appendChild(populateText); 
+    document.body.appendChild(populateButton);
+    populateButton.addEventListener('click', function(e){
+      newGame.populateMasses();
+    });
 
     // Clear Button
     var clearButton = document.createElement("Button");
-    clearButton.className = 'clear';
+    clearButton.id = 'clear';
+    clearButton.className = "button";
     var clearText = document.createTextNode("Clear");     
     clearButton.appendChild(clearText); 
     document.body.appendChild(clearButton);
@@ -27,15 +62,6 @@ var GameView = require('./lib/gameView.js');
       newGame.clearMasses();
     }); 
 
-    // Reset Button
-    var resetButton = document.createElement("Button");
-    resetButton.className = 'reset';
-    var resetText = document.createTextNode("Reset");     
-    resetButton.appendChild(resetText); 
-    document.body.appendChild(resetButton);
-    resetButton.addEventListener('click', function(e){
-      newGame.resetMasses();
-    });
 
     // AntiGravity
     var antiGButton = document.createElement("Button");
@@ -58,7 +84,3 @@ var GameView = require('./lib/gameView.js');
       var posY = event.clientY;
       newGame.addMass([posX,posY]);
     });
-
-    // var shipRadius = newGame.ship.radius;
-    // var radiusCount = document.createTextNode("Mass: " + shipRadius);
-    // document.body.appendChild(radiusCount);

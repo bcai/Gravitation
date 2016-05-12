@@ -40,7 +40,7 @@ ul {
 
 h1 {
   position: absolute;
-  top: 10px;
+  top: 15px;
   text-align: center;
   width: 100%;
   margin: auto;
@@ -49,59 +49,68 @@ h1 {
   font-size: 48px;
 }
 
-.clear {
-  position: absolute;
-  right: 12px;
-  top: 20px;
-  background-color: white;
-  padding: 8px 10px;
-  opacity: 0.55;
-  font-family: monospace;
-  font-size: 20px;
-  border-radius: 3px;
-}
-.clear:hover {
-  cursor:pointer;
-  background-color: white;
-  opacity: 0.8;
-}
-
-.reset {
-  position: absolute;
-  right: 106px;
-  top: 20px;
-  background-color: white;
-  padding: 8px 10px;
-  opacity: 0.55;
-  font-family: monospace;
-  font-size: 20px;
-  border-radius: 3px;
-}
-.reset:hover {
-  cursor:pointer;
-  background-color: white;
-  opacity: 0.8;
-}
-
 h3 {
   position: absolute;
-  right: 77px;
-  top: 80px;
   text-align: center;
   color: white;
   font-family: monospace;
   font-size: 20px;
 }
 
+#reset-text {
+  font-size:22px;
+  left: 12px;
+  top: 20px;
+}
+
+.button {
+  position: absolute;
+  background-color: white;
+  padding: 4px 8px;
+  opacity: 0.55;
+  font-family: monospace;
+  font-size: 18px;
+  border-radius: 3px;
+}
+.button:hover {
+  cursor:pointer;
+  background-color: white;
+  opacity: 0.8;
+}
+
+#populate {
+  right: 94px;
+  top: 30px;
+}
+
+#clear {
+  right: 12px;
+  top: 30px;
+}
+
+#reset-all {
+  left: 12px;
+  top: 55px;
+}
+
+#reset-ship {
+  left: 72px;
+  top: 55px;
+}
+
+#anti-g-text {
+  right: 73px;
+  top: 73px;
+}
 #anti-gravity {
   position: absolute;
   right: 12px;
-  top: 75px;
+  top: 70px;
 
   width: 35px;
   text-align: center;
   background-color: white;
-  padding: 6px 10px;
+  padding: 4px 8px;
   opacity: 0.55;
   font-family: monospace;
   font-size: 20px;
