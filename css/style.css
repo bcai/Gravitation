@@ -29,6 +29,7 @@ body {
   background-color: black;
   position: absolute;
   width: 100%;
+  min-width: 800px;
   min-height: 100%;
   background-size: 55px 55px;
   background-image: linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px);
@@ -42,10 +43,12 @@ ul {
 .instructions {
   bottom: 0;
   position: absolute;
+  max-height: 84%;
   background-color: rgba(255,255,255,0.15);
   color: white;
   font-family: monospace;
-  width: 25%;
+  width: 21%;
+  min-width: 150px;
   margin: auto;
   padding: 20px;
   z-index: -1;
@@ -93,21 +96,23 @@ h3 {
 
 .button {
   position: absolute;
-  background-color: white;
   padding: 4px 8px;
-  opacity: 0.55;
+  border: 1px solid white;
+  border-radius: 2px;
+  
   font-family: monospace;
   font-size: 18px;
-  border-radius: 3px;
+  background-color: transparent;
+  color: white;
 }
 .button:hover {
   cursor:pointer;
   background-color: white;
-  opacity: 0.8;
+  color: black;
 }
 
 #populate {
-  right: 94px;
+  right: 96px;
   top: 30px;
 }
 
@@ -128,18 +133,17 @@ h3 {
 
 #anti-g-text {
   right: 73px;
-  top: 73px;
+  top: 76px;
 }
 #anti-gravity {
   position: absolute;
   right: 12px;
-  top: 70px;
+  top: 73px;
 
   width: 35px;
   text-align: center;
-  background-color: white;
+  background-color: rgba(255,255,255,0.8);
   padding: 4px 8px;
-  opacity: 0.55;
   font-family: monospace;
   font-size: 20px;
   border-radius: 3px;
@@ -147,6 +151,5 @@ h3 {
 #anti-gravity:hover {
   cursor:pointer;
   background-color: white;
-  opacity: 0.8;
 }
 
