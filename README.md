@@ -91,11 +91,12 @@ Multiple buttons and toggles are available to the user to interact with the elem
 
 The user can interact with a main element on the canvas, navigating via directional keys, and absorbing other objects in the process.
 
-![user-interaction]
 
 The `Reset All` button allows the user to reset all the elements on the canvas. `Reset Mass` resets the mass of the main element to a initial state of size 10.
 
-The `Populate` button populates the canvas with an additional 15 elements.
+The `Populate` button populates the canvas with an additional 15 elements. Spam-click for interesting results.
+
+![user-interaction]
 
 The `Clear` button clears the canvas of all elements except the main element.
 
