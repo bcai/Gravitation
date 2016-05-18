@@ -81,6 +81,8 @@ Mass.prototype.collideWith = function (otherObject) {
 };
 ```
 
+![canvas-rendering]
+
 ### User Interaction
 
 Multiple buttons and toggles are available to the user to interact with the elements on the canvas.
@@ -126,3 +128,7 @@ A great implementation of this simulation would be to create masses that have a 
 ### Masses with User-Specified Mass and Velocity
 
 Instead of simply clicking on the page to generate an element, a user can create an element with a set mass and directional velocity with a click and drag of the mouse.
+
+
+
+[canvas-rendering]: ./assets/20160517-163011_capture.gif
