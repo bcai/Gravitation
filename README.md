@@ -57,11 +57,12 @@ Vector Math:
 
 ### Canvas Rendering
 
-![canvas-rendering]
 
 The HTML `<canvas>` element is used to draw the gravitational objects in this simulator. The objects are redrawn and rendered every 20 milliseconds, resulting in the awesome animations that can be seen on the webpage.
 
-The canvas itself will dynamically resize according to the size of the page, using a resize event listener.
+![canvas-rendering]
+
+In addition, the canvas itself will dynamically resize according to the size of the page, using a resize event listener.
 
 Objects moving around the page must have collision detection. If the objects collide with one another, the larger mass will swallow up the smaller.
 
@@ -89,6 +90,8 @@ Mass.prototype.collideWith = function (otherObject) {
 Multiple buttons and toggles are available to the user to interact with the elements on the canvas.
 
 The user can interact with a main element on the canvas, navigating via directional keys, and absorbing other objects in the process.
+
+![user-interaction]
 
 The `Reset All` button allows the user to reset all the elements on the canvas. `Reset Mass` resets the mass of the main element to a initial state of size 10.
 
@@ -133,3 +136,4 @@ Instead of simply clicking on the page to generate an element, a user can create
 
 
 [canvas-rendering]: ./assets/20160517-163011_capture.gif
+[user-interaction]: ./assets/20160517-180809_capture.gif
